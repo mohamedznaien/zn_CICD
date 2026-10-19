@@ -52,7 +52,7 @@ jobs:
 
   task1-docker-build:
     # TASK 1.2: Add the required job dependency here.
-    needs: test
+    needs: task1-test
     runs-on: ubuntu-latest
 
     steps:
