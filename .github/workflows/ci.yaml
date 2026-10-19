@@ -52,7 +52,7 @@ jobs:
 
   task1-docker-build:
     # TASK 1.2: Add the required job dependency here.
-
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -67,6 +67,10 @@ jobs:
           context: ./expo # Do not change it to sdo-expo its the folder name :D
           load: true
           tags: sdo-expo:1.0
+      - name: Run container test
+        run:
+          output=$(docker run --rm sdo-expo:1.0 2 10)
+          test “$output” = “2 ^ 10 = 1024”
 
       # TASK 1.2: Add a step to run and verify the container.
 
