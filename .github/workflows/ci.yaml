@@ -70,7 +70,7 @@ jobs:
       - name: Run container test
         run: |
           output=$(docker run --rm sdo-expo:1.0 2 10)
-          test “$output” = “2 ^ 10 = 1024”
+          test "$output” = “2 ^ 10 = 1024"
 
       # TASK 1.2: Add a step to run and verify the container.
 
