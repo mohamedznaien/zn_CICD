@@ -28,7 +28,11 @@ jobs:
 
       - name: Compile C application
         run: gcc expo/expo.c -lm -o sdo-expo
-
+      - name: Run application test
+        run: |
+          output=$(./sdo-expo 2 10)
+          echo "Output: $output"
+          test "$output" = "2 ^ 10 = 1024"
       # TASK 1.1: Add your functional test step here.
 
   # ============================================================
@@ -56,11 +60,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Run application test
-        run: |
-          output=$(./sdo-expo 2 10)
-          echo "Output: $output"
-          test "$output" = "2 ^ 10 = 1024"
+      
       - name: Build Docker image
         uses: docker/build-push-action@v6
         with:
